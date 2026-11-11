@@ -32,6 +32,13 @@ export interface TicketDetails {
   branch?: string;
   createdAt: string;
   updatedAt: string;
+  aiAnalysis?: {
+    summary?: string;
+    recommendedBranch?: string;
+    recommendedDepartment?: string;
+    confidence?: number;
+    analyzedAt?: string;
+  };
   timeline?: Array<{
     action: string;
     note?: string;
