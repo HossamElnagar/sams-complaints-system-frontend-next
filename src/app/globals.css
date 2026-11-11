@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  
+  /* SAMS Institutional Color Palette */
+  --sams-navy-950: #07182c;
+  --sams-navy-900: #0a2240;
+  --sams-navy-800: #12335c;
+  --sams-navy-700: #1b497e;
+  --sams-gold-500: #c59b27;
+  --sams-gold-400: #dfb136;
+  --sams-gold-600: #a47f1c;
+
+  --card-bg: #ffffff;
+  --card-border: #e2e8f0;
+  --text-muted: #64748b;
+  --input-bg: #ffffff;
+  --input-border: #cbd5e1;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #06111f;
+    --foreground: #f1f5f9;
+    
+    --card-bg: #0c1c30;
+    --card-border: #1a3250;
+    --text-muted: #94a3b8;
+    --input-bg: #091626;
+    --input-border: #1e3a5f;
+  }
+}
+
+html {
+  direction: rtl;
+  text-align: right;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Cairo", "Almarai", "Tajawal", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Institutional utilities */
+.sams-gradient-hero {
+  background: linear-gradient(135deg, rgba(7, 24, 44, 0.92) 0%, rgba(10, 34, 64, 0.85) 60%, rgba(27, 73, 126, 0.75) 100%);
+}
+
+.sams-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 1rem;
+}
