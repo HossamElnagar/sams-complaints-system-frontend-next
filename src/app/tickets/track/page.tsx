@@ -4,6 +4,7 @@ import React, { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { fetchTicketByNumber, TicketDetails } from '@/features/tickets/lib/ticket-api';
+import { AiAdvisoryCard } from '@/features/tickets/components/ai-advisory-card';
 
 function TrackTicketContent() {
   const searchParams = useSearchParams();
@@ -172,6 +173,13 @@ function TrackTicketContent() {
                 {ticket.description}
               </p>
             </div>
+
+            {/* AI Advisory Analysis Card */}
+            {ticket.aiAnalysis && (
+              <div className="mb-8">
+                <AiAdvisoryCard analysis={ticket.aiAnalysis} />
+              </div>
+            )}
 
             {/* Timeline */}
             <div>
