@@ -1,4 +1,4 @@
-import { AdminTicket } from '@/features/admin/lib/admin-api';
+import type { AdminTicket } from '../../admin/lib/admin-api';
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:3000';
 
