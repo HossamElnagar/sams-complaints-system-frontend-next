@@ -282,6 +282,15 @@ export default function AdminDashboardPage() {
                   {getRoleLabel(adminUser.role)}
                 </div>
               </div>
+              {(adminUser.role === 'AcademyPresident' || adminUser.role === 'SuperAdmin') && (
+                <Link
+                  href="/admin/president"
+                  className="mr-2 px-3 py-1.5 text-xs font-bold bg-purple-500/30 text-purple-200 hover:bg-purple-500/40 rounded-lg border border-purple-400/40 transition-all flex items-center gap-1"
+                >
+                  <span>🏛️</span>
+                  <span>بوابة الرئاسة (BI)</span>
+                </Link>
+              )}
               <button
                 type="button"
                 onClick={handleLogout}

@@ -118,6 +118,15 @@ export function Header() {
                 <span>لوحة التحكم</span>
               </Link>
             )}
+            {(adminUser?.role === 'AcademyPresident' || adminUser?.role === 'SuperAdmin') && (
+              <Link
+                href="/admin/president"
+                className="inline-flex items-center gap-1.5 font-bold text-purple-600 dark:text-purple-400 hover:underline"
+              >
+                <span>🏛️</span>
+                <span>بوابة الرئاسة (BI)</span>
+              </Link>
+            )}
           </nav>
 
           {/* Staff Login / Profile Trigger */}
