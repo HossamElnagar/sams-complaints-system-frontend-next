@@ -1,15 +1,38 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 export function Header() {
+  const router = useRouter();
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loginError, setLoginError] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [adminUser, setAdminUser] = useState<{ fullName: string; role: string } | null>(null);
+
+  // Check auth state on client mount
+  useEffect(() => {
+    const checkAuth = () => {
+      const stored = sessionStorage.getItem('sams_admin');
+      if (stored) {
+        try {
+          setAdminUser(JSON.parse(stored));
+        } catch {
+          setAdminUser(null);
+        }
+      } else {
+        setAdminUser(null);
+      }
+    };
+
+    checkAuth();
+    window.addEventListener('storage', checkAuth);
+    return () => window.removeEventListener('storage', checkAuth);
+  }, []);
 
   const handleLoginSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -32,14 +55,22 @@ export function Header() {
       // Store token safely in session storage
       sessionStorage.setItem('sams_token', data.accessToken);
       sessionStorage.setItem('sams_admin', JSON.stringify(data.admin));
-      alert(`مرحباً بك: ${data.admin.fullName} (${data.admin.role})`);
+      setAdminUser(data.admin);
       setIsLoginModalOpen(false);
+      router.push('/admin/dashboard');
     } catch (err: unknown) {
       const message = err instanceof Error ? err.message : 'البريد الإلكتروني أو كلمة المرور غير صحيحة';
       setLoginError(message);
     } finally {
       setIsSubmitting(false);
     }
+  };
+
+  const handleLogout = () => {
+    sessionStorage.removeItem('sams_token');
+    sessionStorage.removeItem('sams_admin');
+    setAdminUser(null);
+    router.push('/');
   };
 
   return (
@@ -78,19 +109,55 @@ export function Header() {
             <Link href="/tickets/track" className="hover:text-[#c59b27] transition-colors">
               متابعة شكوى
             </Link>
+            {adminUser && (
+              <Link
+                href="/admin/dashboard"
+                className="inline-flex items-center gap-1.5 font-bold text-[#c59b27] hover:underline"
+              >
+                <span>📊</span>
+                <span>لوحة التحكم</span>
+              </Link>
+            )}
+            {(adminUser?.role === 'AcademyPresident' || adminUser?.role === 'SuperAdmin') && (
+              <Link
+                href="/admin/president"
+                className="inline-flex items-center gap-1.5 font-bold text-purple-600 dark:text-purple-400 hover:underline"
+              >
+                <span>🏛️</span>
+                <span>بوابة الرئاسة (BI)</span>
+              </Link>
+            )}
           </nav>
 
-          {/* Staff Login Trigger */}
+          {/* Staff Login / Profile Trigger */}
           <div className="flex items-center gap-3">
-            <button
-              onClick={() => setIsLoginModalOpen(true)}
-              className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white bg-[#0a2240] hover:bg-[#12335c] dark:bg-[#1b497e] dark:hover:bg-[#12335c] rounded-lg shadow-sm border border-[#c59b27]/40 transition-all cursor-pointer"
-            >
-              <svg className="w-4 h-4 text-[#c59b27]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
-              </svg>
-              <span>دخول الكادر الإداري</span>
-            </button>
+            {adminUser ? (
+              <div className="flex items-center gap-2">
+                <Link
+                  href="/admin/dashboard"
+                  className="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 text-xs font-bold text-white bg-[#0a2240] dark:bg-[#c59b27] dark:text-[#07182c] rounded-lg border border-[#c59b27]/40 shadow-xs"
+                >
+                  <span>👤</span>
+                  <span>{adminUser.fullName}</span>
+                </Link>
+                <button
+                  onClick={handleLogout}
+                  className="px-3 py-1.5 text-xs font-bold text-rose-600 bg-rose-50 hover:bg-rose-100 dark:bg-rose-950/40 dark:text-rose-300 rounded-lg border border-rose-200 dark:border-rose-900 transition-all cursor-pointer"
+                >
+                  خروج
+                </button>
+              </div>
+            ) : (
+              <button
+                onClick={() => setIsLoginModalOpen(true)}
+                className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white bg-[#0a2240] hover:bg-[#12335c] dark:bg-[#1b497e] dark:hover:bg-[#12335c] rounded-lg shadow-sm border border-[#c59b27]/40 transition-all cursor-pointer"
+              >
+                <svg className="w-4 h-4 text-[#c59b27]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
+                </svg>
+                <span>دخول الكادر الإداري</span>
+              </button>
+            )}
           </div>
         </div>
       </header>
