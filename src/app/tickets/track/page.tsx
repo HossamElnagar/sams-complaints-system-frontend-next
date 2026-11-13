@@ -5,6 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { fetchTicketByNumber, TicketDetails } from '@/features/tickets/lib/ticket-api';
 import { AiAdvisoryCard } from '@/features/tickets/components/ai-advisory-card';
+import { ShieldCheckIcon, SearchIcon } from '@/components/ui/icons';
 
 function TrackTicketContent() {
   const searchParams = useSearchParams();
@@ -77,8 +78,9 @@ function TrackTicketContent() {
     <div className="py-12 lg:py-16 bg-slate-50 dark:bg-[#06111f] min-h-[calc(100vh-80px)]">
       <div className="container mx-auto px-4 lg:px-8 max-w-3xl">
         <div className="text-center mb-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#c59b27]/20 border border-[#c59b27]/40 text-[#a47f1c] dark:text-[#dfb136] text-xs font-bold mb-3">
-            استعلام وتتبع إلكتروني
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#c59b27]/20 border border-[#c59b27]/40 text-[#a47f1c] dark:text-[#dfb136] text-xs font-bold mb-3">
+            <ShieldCheckIcon className="w-3.5 h-3.5" />
+            <span>استعلام وتتبع إلكتروني</span>
           </div>
           <h1 className="text-3xl font-extrabold text-[#0a2240] dark:text-slate-100 mb-2">
             متابعة مسار الشكوى
@@ -108,9 +110,10 @@ function TrackTicketContent() {
             <button
               type="submit"
               disabled={isLoading}
-              className="px-8 py-3 font-bold text-white bg-[#0a2240] hover:bg-[#12335c] dark:bg-[#c59b27] dark:hover:bg-[#dfb136] dark:text-[#07182c] rounded-xl shadow-md transition-all cursor-pointer disabled:opacity-50"
+              className="inline-flex items-center justify-center gap-2 px-8 py-3 font-bold text-white bg-[#0a2240] hover:bg-[#12335c] dark:bg-[#c59b27] dark:hover:bg-[#dfb136] dark:text-[#07182c] rounded-xl shadow-md transition-all cursor-pointer disabled:opacity-50"
             >
-              {isLoading ? 'جاري البحث...' : 'استعلام'}
+              <SearchIcon className="w-4 h-4" />
+              <span>{isLoading ? 'جاري البحث...' : 'استعلام'}</span>
             </button>
           </form>
 

@@ -8,6 +8,7 @@ import {
   fetchDepartments,
   dispatchTicket,
 } from '../lib/admin-api';
+import { CompassIcon, CloseIcon } from '@/components/ui/icons';
 
 interface DispatchModalProps {
   ticket: AdminTicket | null;
@@ -103,7 +104,7 @@ export function DispatchModal({
       <div className="relative w-full max-w-lg bg-white dark:bg-[#0c1c30] rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 p-6 sm:p-8 animate-in fade-in duration-200">
         <div className="flex items-center justify-between pb-4 border-b border-slate-200 dark:border-slate-800">
           <div className="flex items-center gap-2">
-            <span className="text-xl">🧭</span>
+            <CompassIcon className="w-5 h-5 text-[#c59b27]" />
             <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-slate-100">
               توجيه الشكوى أو التصعيد (الإدارة المركزية)
             </h3>
@@ -112,7 +113,7 @@ export function DispatchModal({
             onClick={onClose}
             className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-1 rounded-lg"
           >
-            ✕
+            <CloseIcon className="w-5 h-5" />
           </button>
         </div>
 

@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { AdminTicket, resolveTicket, ResolvePayload } from '../lib/admin-api';
+import { CloseIcon } from '@/components/ui/icons';
 
 interface ResolveModalProps {
   ticket: AdminTicket | null;
@@ -68,7 +69,7 @@ export function ResolveModal({
             onClick={onClose}
             className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-1 rounded-lg"
           >
-            ✕
+            <CloseIcon className="w-5 h-5" />
           </button>
         </div>
 

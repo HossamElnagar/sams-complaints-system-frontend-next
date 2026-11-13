@@ -4,6 +4,12 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import {
+  BarChartIcon,
+  ScaleIcon,
+  UserIcon,
+  CloseIcon,
+} from '@/components/ui/icons';
 
 export function Header() {
   const router = useRouter();
@@ -114,7 +120,7 @@ export function Header() {
                 href="/admin/dashboard"
                 className="inline-flex items-center gap-1.5 font-bold text-[#c59b27] hover:underline"
               >
-                <span>📊</span>
+                <BarChartIcon className="w-4 h-4" />
                 <span>لوحة التحكم</span>
               </Link>
             )}
@@ -123,7 +129,7 @@ export function Header() {
                 href="/admin/president"
                 className="inline-flex items-center gap-1.5 font-bold text-purple-600 dark:text-purple-400 hover:underline"
               >
-                <span>🏛️</span>
+                <ScaleIcon className="w-4 h-4" />
                 <span>بوابة الرئاسة (BI)</span>
               </Link>
             )}
@@ -137,7 +143,7 @@ export function Header() {
                   href="/admin/dashboard"
                   className="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 text-xs font-bold text-white bg-[#0a2240] dark:bg-[#c59b27] dark:text-[#07182c] rounded-lg border border-[#c59b27]/40 shadow-xs"
                 >
-                  <span>👤</span>
+                  <UserIcon className="w-3.5 h-3.5" />
                   <span>{adminUser.fullName}</span>
                 </Link>
                 <button
@@ -177,7 +183,7 @@ export function Header() {
                 onClick={() => setIsLoginModalOpen(false)}
                 className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-1 rounded-lg"
               >
-                ✕
+                <CloseIcon className="w-5 h-5" />
               </button>
             </div>
 

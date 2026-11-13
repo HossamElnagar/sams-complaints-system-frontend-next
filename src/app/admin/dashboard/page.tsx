@@ -13,6 +13,14 @@ import {
 import { DispatchModal } from '@/features/admin/components/dispatch-modal';
 import { ResolveModal } from '@/features/admin/components/resolve-modal';
 import { AiAdvisoryCard } from '@/features/tickets/components/ai-advisory-card';
+import {
+  ScaleIcon,
+  RefreshIcon,
+  ShieldCheckIcon,
+  SearchIcon,
+  InboxIcon,
+  CompassIcon,
+} from '@/components/ui/icons';
 
 const STATUS_TABS = [
   'الكل',
@@ -156,8 +164,8 @@ export default function AdminDashboardPage() {
   const getStatusBadge = (status: string, isEscalated?: boolean) => {
     if (isEscalated) {
       return (
-        <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold bg-purple-100 text-purple-800 dark:bg-purple-950/60 dark:text-purple-300 border border-purple-300 dark:border-purple-800">
-          <span>🏛️</span>
+        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-purple-100 text-purple-800 dark:bg-purple-950/60 dark:text-purple-300 border border-purple-300 dark:border-purple-800">
+          <ScaleIcon className="w-3.5 h-3.5 text-purple-700 dark:text-purple-300" />
           <span>مصعدة لرئاسة الأكاديمية</span>
         </span>
       );
@@ -223,7 +231,9 @@ export default function AdminDashboardPage() {
   if (isAuthChecking) {
     return (
       <div className="container mx-auto px-4 py-16 text-center max-w-lg">
-        <div className="inline-block animate-spin text-3xl mb-3">🔄</div>
+        <div className="inline-flex items-center justify-center mb-3">
+          <RefreshIcon className="w-8 h-8 text-[#c59b27] animate-spin" />
+        </div>
         <p className="text-sm text-slate-500 font-semibold">جاري التحقق من هوية المستخدم...</p>
       </div>
     );
@@ -234,7 +244,9 @@ export default function AdminDashboardPage() {
     return (
       <div className="container mx-auto px-4 py-16 text-center max-w-lg">
         <div className="p-8 rounded-2xl bg-white dark:bg-[#0c1c30] border border-slate-200 dark:border-slate-800 shadow-xl">
-          <div className="text-4xl mb-4">🔒</div>
+          <div className="w-14 h-14 rounded-2xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center mx-auto mb-4">
+            <ShieldCheckIcon className="w-8 h-8 text-slate-400" />
+          </div>
           <h2 className="text-2xl font-bold text-[#0a2240] dark:text-slate-100 mb-2">
             غير مصرح بالدخول
           </h2>
@@ -285,9 +297,9 @@ export default function AdminDashboardPage() {
               {(adminUser.role === 'AcademyPresident' || adminUser.role === 'SuperAdmin') && (
                 <Link
                   href="/admin/president"
-                  className="mr-2 px-3 py-1.5 text-xs font-bold bg-purple-500/30 text-purple-200 hover:bg-purple-500/40 rounded-lg border border-purple-400/40 transition-all flex items-center gap-1"
+                  className="mr-2 px-3 py-1.5 text-xs font-bold bg-purple-500/30 text-purple-200 hover:bg-purple-500/40 rounded-lg border border-purple-400/40 transition-all flex items-center gap-1.5"
                 >
-                  <span>🏛️</span>
+                  <ScaleIcon className="w-3.5 h-3.5" />
                   <span>بوابة الرئاسة (BI)</span>
                 </Link>
               )}
@@ -343,7 +355,7 @@ export default function AdminDashboardPage() {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full pl-4 pr-10 py-2 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-[#c59b27]"
               />
-              <span className="absolute right-3.5 top-2.5 text-slate-400 text-sm">🔍</span>
+              <SearchIcon className="absolute right-3.5 top-2.5 w-4 h-4 text-slate-400" />
             </div>
 
             {/* Refresh button */}
@@ -389,12 +401,16 @@ export default function AdminDashboardPage() {
         {/* Tickets List */}
         {isLoading ? (
           <div className="p-12 text-center text-slate-500 dark:text-slate-400">
-            <div className="inline-block animate-spin text-2xl mb-3">🔄</div>
+            <div className="inline-flex items-center justify-center mb-3">
+              <RefreshIcon className="w-6 h-6 text-[#c59b27] animate-spin" />
+            </div>
             <p className="text-sm font-semibold">جاري تحميل شكاوى النطاق الإداري المخصص...</p>
           </div>
         ) : filteredTickets.length === 0 ? (
           <div className="p-16 text-center rounded-2xl bg-white dark:bg-[#0c1c30] border border-slate-200 dark:border-slate-800">
-            <div className="text-4xl mb-3">📭</div>
+            <div className="w-14 h-14 rounded-2xl bg-slate-100 dark:bg-slate-800/60 flex items-center justify-center mx-auto mb-3">
+              <InboxIcon className="w-7 h-7 text-slate-400" />
+            </div>
             <h3 className="text-lg font-bold text-slate-800 dark:text-slate-200 mb-1">
               لا توجد شكاوى مطابقة
             </h3>
@@ -516,8 +532,8 @@ export default function AdminDashboardPage() {
                         onClick={() => setExpandedAiTicketId(isAiExpanded ? null : ticket._id)}
                         className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0a2240] dark:text-[#c59b27] hover:underline cursor-pointer"
                       >
-                        <span>🤖</span>
-                        <span>{isAiExpanded ? 'إخفاء التحليل الاستشاري بالذكاء الاصطناعي' : 'عرض التحليل الاستشاري بالذكاء الاصطناعي (Model 1 & 2)'}</span>
+                        <CompassIcon className="w-4 h-4 text-[#c59b27]" />
+                        <span>{isAiExpanded ? 'إخفاء التحليل الاستشاري' : 'عرض التحليل والتوجيه الاستشاري (Model 1 & 2)'}</span>
                         <span className="text-xs">{isAiExpanded ? '▲' : '▼'}</span>
                       </button>
 
@@ -529,7 +545,7 @@ export default function AdminDashboardPage() {
                             onClick={() => setDispatchTicketTarget(ticket)}
                             className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-bold text-white bg-[#0a2240] hover:bg-[#12335c] rounded-xl shadow-xs border border-[#c59b27]/30 transition-all cursor-pointer"
                           >
-                            <span>🧭</span>
+                            <CompassIcon className="w-3.5 h-3.5 text-[#dfb136]" />
                             <span>توجيه / تصعيد الشكوى</span>
                           </button>
                         )}
@@ -540,7 +556,7 @@ export default function AdminDashboardPage() {
                             onClick={() => setResolveTicketTarget(ticket)}
                             className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 rounded-xl shadow-xs transition-all cursor-pointer"
                           >
-                            <span>⚖️</span>
+                            <ScaleIcon className="w-3.5 h-3.5" />
                             <span>البت الإداري في الشكوى</span>
                           </button>
                         )}

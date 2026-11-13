@@ -19,6 +19,18 @@ import {
   downloadCsvReport,
 } from '@/features/analytics/lib/analytics-api';
 import { ResolveModal } from '@/features/admin/components/resolve-modal';
+import {
+  ScaleIcon,
+  PrinterIcon,
+  DownloadIcon,
+  UserIcon,
+  BarChartIcon,
+  CheckCircleIcon,
+  ClockIcon,
+  BuildingIcon,
+  FileCheckIcon,
+  RefreshIcon,
+} from '@/components/ui/icons';
 
 export default function PresidentBiDashboardPage() {
   const router = useRouter();
@@ -143,7 +155,9 @@ export default function PresidentBiDashboardPage() {
   if (isAuthChecking) {
     return (
       <div className="container mx-auto px-4 py-20 text-center max-w-lg">
-        <div className="inline-block animate-spin text-3xl mb-3">🔄</div>
+        <div className="inline-flex items-center justify-center mb-3">
+          <RefreshIcon className="w-8 h-8 text-[#c59b27] animate-spin" />
+        </div>
         <p className="text-sm text-slate-500 font-semibold">جاري التحقق من الصلاحيات التنفيذية...</p>
       </div>
     );
@@ -159,7 +173,9 @@ export default function PresidentBiDashboardPage() {
     return (
       <div className="container mx-auto px-4 py-16 text-center max-w-lg">
         <div className="p-8 rounded-2xl bg-white dark:bg-[#0c1c30] border border-slate-200 dark:border-slate-800 shadow-xl">
-          <div className="text-4xl mb-4">🏛️</div>
+          <div className="w-14 h-14 rounded-2xl bg-[#c59b27]/15 flex items-center justify-center mx-auto mb-4">
+            <ScaleIcon className="w-8 h-8 text-[#c59b27]" />
+          </div>
           <h2 className="text-2xl font-bold text-[#0a2240] dark:text-slate-100 mb-2">
             بوابة الإدارة العليا ورئاسة الأكاديمية
           </h2>
@@ -219,8 +235,9 @@ export default function PresidentBiDashboardPage() {
         <div className="container mx-auto max-w-7xl">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
             <div>
-              <div className="flex items-center gap-2.5 text-xs text-[#c59b27] font-bold mb-1">
-                <span>🏛️ مكتب رئيس الأكاديمية</span>
+              <div className="flex items-center gap-2 text-xs text-[#c59b27] font-bold mb-1">
+                <ScaleIcon className="w-4 h-4 text-[#c59b27]" />
+                <span>مكتب رئيس الأكاديمية</span>
                 <span>•</span>
                 <span>بوابة ذكاء الأعمال والتحليلات الوطنية (Executive BI)</span>
               </div>
@@ -236,7 +253,7 @@ export default function PresidentBiDashboardPage() {
                 onClick={handlePrint}
                 className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold bg-white/10 hover:bg-white/20 text-slate-100 rounded-xl border border-white/20 transition-all cursor-pointer"
               >
-                <span>🖨️</span>
+                <PrinterIcon className="w-4 h-4" />
                 <span>طباعة تقرير الإيجاز</span>
               </button>
 
@@ -246,7 +263,7 @@ export default function PresidentBiDashboardPage() {
                 disabled={isExporting}
                 className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold bg-[#c59b27] hover:bg-[#dfb136] text-[#07182c] rounded-xl shadow-md transition-all cursor-pointer disabled:opacity-50"
               >
-                <span>📥</span>
+                <DownloadIcon className="w-4 h-4" />
                 <span>{isExporting ? 'جاري التصدير...' : 'تصدير البيانات (CSV)'}</span>
               </button>
 
@@ -263,7 +280,10 @@ export default function PresidentBiDashboardPage() {
               </button>
 
               <div className="mr-2 flex items-center gap-2 bg-white/10 backdrop-blur-xs px-3 py-1.5 rounded-xl border border-white/10 text-xs">
-                <span className="font-bold text-[#c59b27]">👤 {adminUser.fullName}</span>
+                <span className="font-bold text-[#c59b27] flex items-center gap-1.5">
+                  <UserIcon className="w-3.5 h-3.5" />
+                  <span>{adminUser.fullName}</span>
+                </span>
                 <span className="text-slate-300">({adminUser.role === 'AcademyPresident' ? 'رئيس الأكاديمية' : adminUser.role})</span>
                 <button
                   type="button"
@@ -296,7 +316,7 @@ export default function PresidentBiDashboardPage() {
             <div className="absolute top-0 right-0 w-full h-1 bg-[#0a2240] dark:bg-[#c59b27]" />
             <div className="flex items-center justify-between text-slate-500 dark:text-slate-400 text-xs font-semibold mb-2">
               <span>إجمالي الشكاوى الوطنية</span>
-              <span className="text-lg">📊</span>
+              <BarChartIcon className="w-4 h-4 text-slate-400" />
             </div>
             <div className="text-3xl font-black text-[#0a2240] dark:text-slate-100">
               {summary?.totalTickets ?? '...'}
@@ -311,7 +331,7 @@ export default function PresidentBiDashboardPage() {
             <div className="absolute top-0 right-0 w-full h-1 bg-emerald-500" />
             <div className="flex items-center justify-between text-slate-500 dark:text-slate-400 text-xs font-semibold mb-2">
               <span>معدل الإنجاز والحل المعتمد</span>
-              <span className="text-lg">✅</span>
+              <CheckCircleIcon className="w-4 h-4 text-emerald-500" />
             </div>
             <div className="flex items-baseline gap-2">
               <span className="text-3xl font-black text-emerald-600 dark:text-emerald-400">
@@ -333,7 +353,7 @@ export default function PresidentBiDashboardPage() {
             <div className="absolute top-0 right-0 w-full h-1 bg-purple-500" />
             <div className="flex items-center justify-between text-slate-500 dark:text-slate-400 text-xs font-semibold mb-2">
               <span>الحالات المعروضة على الرئيس</span>
-              <span className="text-lg">🏛️</span>
+              <ScaleIcon className="w-4 h-4 text-purple-500" />
             </div>
             <div className="text-3xl font-black text-purple-600 dark:text-purple-400">
               {summary?.escalatedCount ?? '...'}
@@ -348,7 +368,7 @@ export default function PresidentBiDashboardPage() {
             <div className="absolute top-0 right-0 w-full h-1 bg-[#c59b27]" />
             <div className="flex items-center justify-between text-slate-500 dark:text-slate-400 text-xs font-semibold mb-2">
               <span>متوسط زمن البت (SLA)</span>
-              <span className="text-lg">⏱️</span>
+              <ClockIcon className="w-4 h-4 text-[#c59b27]" />
             </div>
             <div className="flex items-baseline gap-1.5">
               <span className="text-3xl font-black text-[#0a2240] dark:text-[#c59b27]">
@@ -368,7 +388,7 @@ export default function PresidentBiDashboardPage() {
           <div className="p-6 rounded-2xl bg-white dark:bg-[#0c1c30] border border-slate-200 dark:border-slate-800 shadow-sm">
             <div className="flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-800 mb-5">
               <div className="flex items-center gap-2">
-                <span className="text-xl">🗺️</span>
+                <BuildingIcon className="w-5 h-5 text-[#c59b27]" />
                 <h3 className="text-base font-bold text-slate-900 dark:text-slate-100">
                   مؤشرات فروع الأكاديمية على مستوى الجمهورية
                 </h3>
@@ -422,7 +442,7 @@ export default function PresidentBiDashboardPage() {
           <div className="p-6 rounded-2xl bg-white dark:bg-[#0c1c30] border border-slate-200 dark:border-slate-800 shadow-sm">
             <div className="flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-800 mb-5">
               <div className="flex items-center gap-2">
-                <span className="text-xl">📑</span>
+                <FileCheckIcon className="w-5 h-5 text-[#c59b27]" />
                 <h3 className="text-base font-bold text-slate-900 dark:text-slate-100">
                   توزيع الشكاوى حسب الاختصاص والنوع
                 </h3>
@@ -472,7 +492,7 @@ export default function PresidentBiDashboardPage() {
         <div className="p-6 rounded-2xl bg-white dark:bg-[#0c1c30] border border-purple-200 dark:border-purple-900/60 shadow-sm">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pb-4 border-b border-slate-100 dark:border-slate-800 mb-6">
             <div className="flex items-center gap-2.5">
-              <span className="text-2xl">🏛️</span>
+              <ScaleIcon className="w-6 h-6 text-purple-600 dark:text-purple-400" />
               <div>
                 <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100">
                   الحالات والقضايا المعروضة للبت الرئاسي المباشر
@@ -490,7 +510,9 @@ export default function PresidentBiDashboardPage() {
 
           {escalatedTickets.length === 0 ? (
             <div className="text-center py-12 text-slate-400">
-              <div className="text-3xl mb-2">🎉</div>
+              <div className="w-12 h-12 rounded-full bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto mb-2">
+                <CheckCircleIcon className="w-6 h-6" />
+              </div>
               <p className="text-sm font-semibold">لا توجد أي قضايا مصعدة حالياً لمكتب رئيس الأكاديمية</p>
               <p className="text-xs text-slate-500 mt-1">كافة الحالات قيد المتابعة والمعالجة في الفروع والإدارات المختصة</p>
             </div>
@@ -543,9 +565,9 @@ export default function PresidentBiDashboardPage() {
                           <button
                             type="button"
                             onClick={() => setResolvingTicket(t)}
-                            className="inline-flex items-center gap-1 px-3 py-1.5 text-xs font-bold text-white bg-purple-700 hover:bg-purple-800 rounded-lg shadow-xs transition-all cursor-pointer whitespace-nowrap"
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-white bg-purple-700 hover:bg-purple-800 rounded-lg shadow-xs transition-all cursor-pointer whitespace-nowrap"
                           >
-                            <span>⚖️</span>
+                            <ScaleIcon className="w-3.5 h-3.5" />
                             <span>البت السيادي</span>
                           </button>
                         ) : (
