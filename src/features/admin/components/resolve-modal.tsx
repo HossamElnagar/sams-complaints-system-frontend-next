@@ -96,9 +96,9 @@ export function ResolveModal({
 
           {/* Decision Type */}
           <div>
-            <label className="block text-sm font-semibold text-slate-800 dark:text-slate-200 mb-2">
+            <span className="block text-sm font-semibold text-slate-800 dark:text-slate-200 mb-2">
               قرار البت النهائي:
-            </label>
+            </span>
             <div className="grid grid-cols-2 gap-3">
               <button
                 type="button"
@@ -134,13 +134,14 @@ export function ResolveModal({
 
           {/* Written Justification (Mandatory) */}
           <div>
-            <label className="block text-sm font-semibold text-slate-800 dark:text-slate-200 mb-1">
+            <label htmlFor="resolution-justification" className="block text-sm font-semibold text-slate-800 dark:text-slate-200 mb-1">
               حيثيات ومبررات القرار الإداري (إلزامي - 10 أحرف كحد أدنى):
             </label>
             <p className="text-xs text-slate-500 dark:text-slate-400 mb-1.5">
               سيتم إدراج هذا القرار مع اسم الموظف والتوقيت في السجل الزمني التوثيقي للطالب.
             </p>
             <textarea
+              id="resolution-justification"
               required
               rows={4}
               value={justification}

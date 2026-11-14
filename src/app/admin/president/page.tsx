@@ -57,7 +57,7 @@ export default function PresidentBiDashboardPage() {
   // Load session auth asynchronously (React 19 compliant)
   useEffect(() => {
     let ignore = false;
-    Promise.resolve().then(() => {
+    void Promise.resolve().then(() => {
       if (ignore) return;
       const storedToken = sessionStorage.getItem('sams_token');
       const storedAdmin = sessionStorage.getItem('sams_admin');

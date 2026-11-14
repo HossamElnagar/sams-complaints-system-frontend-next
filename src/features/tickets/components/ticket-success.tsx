@@ -14,7 +14,7 @@ export function TicketSuccess({ ticketNumber, status, onReset }: TicketSuccessPr
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(ticketNumber);
+    void navigator.clipboard.writeText(ticketNumber);
     setCopied(true);
     setTimeout(() => setCopied(false), 2500);
   };

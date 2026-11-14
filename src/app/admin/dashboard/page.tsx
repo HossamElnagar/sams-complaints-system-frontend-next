@@ -55,7 +55,7 @@ export default function AdminDashboardPage() {
   // Load session auth asynchronously
   useEffect(() => {
     let ignore = false;
-    Promise.resolve().then(() => {
+    void Promise.resolve().then(() => {
       if (ignore) return;
       const storedToken = sessionStorage.getItem('sams_token');
       const storedAdmin = sessionStorage.getItem('sams_admin');
@@ -84,7 +84,7 @@ export default function AdminDashboardPage() {
   // Fetch branches asynchronously once
   useEffect(() => {
     let ignore = false;
-    fetchBranches().then((data) => {
+    void fetchBranches().then((data) => {
       if (!ignore) setBranches(data);
     });
     return () => {

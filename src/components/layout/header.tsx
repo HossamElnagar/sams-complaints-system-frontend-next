@@ -195,10 +195,11 @@ export function Header() {
               )}
 
               <div>
-                <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                <label htmlFor="staff-email" className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1">
                   البريد الإلكتروني الجامعي
                 </label>
                 <input
+                  id="staff-email"
                   type="email"
                   required
                   value={email}
@@ -209,10 +210,11 @@ export function Header() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                <label htmlFor="staff-password" className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1">
                   كلمة المرور
                 </label>
                 <input
+                  id="staff-password"
                   type="password"
                   required
                   value={password}

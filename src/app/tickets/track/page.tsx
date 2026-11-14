@@ -95,7 +95,7 @@ function TrackTicketContent() {
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              handleManualSearch(ticketNumber);
+              void handleManualSearch(ticketNumber);
             }}
             className="flex flex-col sm:flex-row gap-3"
           >

@@ -149,10 +149,11 @@ export function DispatchModal({
 
           {isEscalated ? (
             <div>
-              <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
+              <label htmlFor="escalation-reason" className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
                 سبب ومبررات التصعيد لرئيس الأكاديمية *
               </label>
               <textarea
+                id="escalation-reason"
                 required
                 rows={3}
                 minLength={5}
@@ -166,10 +167,11 @@ export function DispatchModal({
             <>
               {/* Branch Selection */}
               <div>
-                <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
+                <label htmlFor="dispatch-branch" className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
                   الفرع المستهدف بالتوجيه *
                 </label>
                 <select
+                  id="dispatch-branch"
                   required
                   value={activeBranchId}
                   onChange={(e) => {
@@ -188,10 +190,11 @@ export function DispatchModal({
 
               {/* Department Selection */}
               <div>
-                <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
+                <label htmlFor="dispatch-department" className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
                   القسم المختص بالفرع *
                 </label>
                 <select
+                  id="dispatch-department"
                   required
                   value={selectedDeptId}
                   onChange={(e) => setSelectedDeptId(e.target.value)}
@@ -212,10 +215,11 @@ export function DispatchModal({
 
               {/* Optional Dispatch Note */}
               <div>
-                <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
+                <label htmlFor="dispatch-note" className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
                   ملاحظات أو تعليمات إدارية للتوجيه (اختياري)
                 </label>
                 <input
+                  id="dispatch-note"
                   type="text"
                   value={dispatchNote}
                   onChange={(e) => setDispatchNote(e.target.value)}
