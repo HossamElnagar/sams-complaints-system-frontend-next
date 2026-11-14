@@ -2,6 +2,12 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { TicketForm } from '@/features/tickets/components/ticket-form';
+import {
+  LandmarkIcon,
+  CompassIcon,
+  ShieldCheckIcon,
+  BuildingIcon,
+} from '@/components/ui/icons';
 
 export default function HomePage() {
   return (
@@ -24,7 +30,7 @@ export default function HomePage() {
         {/* Hero Content */}
         <div className="container relative z-10 mx-auto px-4 lg:px-8 text-center text-white">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#c59b27]/20 border border-[#c59b27]/60 text-[#dfb136] text-xs sm:text-sm font-semibold mb-6">
-            <span>🏛️</span>
+            <LandmarkIcon className="w-4 h-4" />
             <span>بوابة الشكاوى والمقترحات الموحدة لجميع الفروع</span>
           </div>
 
@@ -108,8 +114,8 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="p-8 rounded-2xl bg-slate-50 dark:bg-[#0c1c30] border border-slate-200 dark:border-slate-800">
-              <div className="w-12 h-12 rounded-xl bg-[#c59b27]/20 text-[#c59b27] flex items-center justify-center text-2xl mb-4 font-bold">
-                ⚡
+              <div className="w-12 h-12 rounded-xl bg-[#c59b27]/20 text-[#c59b27] flex items-center justify-center mb-4">
+                <CompassIcon className="w-6 h-6 text-[#c59b27]" />
               </div>
               <h4 className="text-lg font-bold text-slate-900 dark:text-slate-100 mb-2">
                 توجيه ذكي استشاري
@@ -120,8 +126,8 @@ export default function HomePage() {
             </div>
 
             <div className="p-8 rounded-2xl bg-slate-50 dark:bg-[#0c1c30] border border-slate-200 dark:border-slate-800">
-              <div className="w-12 h-12 rounded-xl bg-[#1b497e]/20 text-[#1b497e] dark:text-blue-400 flex items-center justify-center text-2xl mb-4 font-bold">
-                🔒
+              <div className="w-12 h-12 rounded-xl bg-[#1b497e]/20 text-[#1b497e] dark:text-blue-400 flex items-center justify-center mb-4">
+                <ShieldCheckIcon className="w-6 h-6 text-[#1b497e] dark:text-blue-400" />
               </div>
               <h4 className="text-lg font-bold text-slate-900 dark:text-slate-100 mb-2">
                 سرية وتتبع رقمي مشفر
@@ -132,8 +138,8 @@ export default function HomePage() {
             </div>
 
             <div className="p-8 rounded-2xl bg-slate-50 dark:bg-[#0c1c30] border border-slate-200 dark:border-slate-800">
-              <div className="w-12 h-12 rounded-xl bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-2xl mb-4 font-bold">
-                🌐
+              <div className="w-12 h-12 rounded-xl bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-4">
+                <BuildingIcon className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />
               </div>
               <h4 className="text-lg font-bold text-slate-900 dark:text-slate-100 mb-2">
                 تغطية شاملة لكافة الفروع

@@ -8,6 +8,7 @@ import {
   fetchDepartments,
   dispatchTicket,
 } from '../lib/admin-api';
+import { CompassIcon, CloseIcon } from '@/components/ui/icons';
 
 interface DispatchModalProps {
   ticket: AdminTicket | null;
@@ -103,7 +104,7 @@ export function DispatchModal({
       <div className="relative w-full max-w-lg bg-white dark:bg-[#0c1c30] rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 p-6 sm:p-8 animate-in fade-in duration-200">
         <div className="flex items-center justify-between pb-4 border-b border-slate-200 dark:border-slate-800">
           <div className="flex items-center gap-2">
-            <span className="text-xl">🧭</span>
+            <CompassIcon className="w-5 h-5 text-[#c59b27]" />
             <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-slate-100">
               توجيه الشكوى أو التصعيد (الإدارة المركزية)
             </h3>
@@ -112,7 +113,7 @@ export function DispatchModal({
             onClick={onClose}
             className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-1 rounded-lg"
           >
-            ✕
+            <CloseIcon className="w-5 h-5" />
           </button>
         </div>
 
@@ -148,10 +149,11 @@ export function DispatchModal({
 
           {isEscalated ? (
             <div>
-              <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
+              <label htmlFor="escalation-reason" className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
                 سبب ومبررات التصعيد لرئيس الأكاديمية *
               </label>
               <textarea
+                id="escalation-reason"
                 required
                 rows={3}
                 minLength={5}
@@ -165,10 +167,11 @@ export function DispatchModal({
             <>
               {/* Branch Selection */}
               <div>
-                <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
+                <label htmlFor="dispatch-branch" className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
                   الفرع المستهدف بالتوجيه *
                 </label>
                 <select
+                  id="dispatch-branch"
                   required
                   value={activeBranchId}
                   onChange={(e) => {
@@ -187,10 +190,11 @@ export function DispatchModal({
 
               {/* Department Selection */}
               <div>
-                <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
+                <label htmlFor="dispatch-department" className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
                   القسم المختص بالفرع *
                 </label>
                 <select
+                  id="dispatch-department"
                   required
                   value={selectedDeptId}
                   onChange={(e) => setSelectedDeptId(e.target.value)}
@@ -211,10 +215,11 @@ export function DispatchModal({
 
               {/* Optional Dispatch Note */}
               <div>
-                <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
+                <label htmlFor="dispatch-note" className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
                   ملاحظات أو تعليمات إدارية للتوجيه (اختياري)
                 </label>
                 <input
+                  id="dispatch-note"
                   type="text"
                   value={dispatchNote}
                   onChange={(e) => setDispatchNote(e.target.value)}

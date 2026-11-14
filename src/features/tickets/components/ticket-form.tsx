@@ -114,10 +114,11 @@ export function TicketForm() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Student Name */}
           <div>
-            <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+            <label htmlFor="student-name" className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
               اسم الطالب الثلاثي / الرباعي *
             </label>
             <input
+              id="student-name"
               type="text"
               required
               minLength={3}
@@ -131,10 +132,11 @@ export function TicketForm() {
 
           {/* Student Email */}
           <div>
-            <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+            <label htmlFor="student-email" className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
               البريد الإلكتروني للتواصل *
             </label>
             <input
+              id="student-email"
               type="email"
               required
               value={studentEmail}
@@ -146,10 +148,11 @@ export function TicketForm() {
 
           {/* Student Phone */}
           <div>
-            <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+            <label htmlFor="student-phone" className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
               رقم الهاتف (مصر) *
             </label>
             <input
+              id="student-phone"
               type="tel"
               required
               value={studentPhone}
@@ -164,10 +167,11 @@ export function TicketForm() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Branch */}
           <div>
-            <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+            <label htmlFor="student-branch" className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
               الفرع التابع له الطالب *
             </label>
             <select
+              id="student-branch"
               value={branch}
               onChange={(e) => setBranch(e.target.value)}
               className="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-[#c59b27]"
@@ -182,10 +186,11 @@ export function TicketForm() {
 
           {/* Category */}
           <div>
-            <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+            <label htmlFor="ticket-category" className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
               تصنيف الشكوى
             </label>
             <select
+              id="ticket-category"
               value={category}
               onChange={(e) => setCategory(e.target.value)}
               className="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-[#c59b27]"
@@ -200,10 +205,11 @@ export function TicketForm() {
 
           {/* Priority */}
           <div>
-            <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+            <label htmlFor="ticket-priority" className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
               درجة الأولوية
             </label>
             <select
+              id="ticket-priority"
               value={priority}
               onChange={(e) => setPriority(e.target.value)}
               className="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-[#c59b27]"
@@ -219,10 +225,11 @@ export function TicketForm() {
 
         {/* Subject */}
         <div>
-          <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+          <label htmlFor="ticket-subject" className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
             عنوان الشكوى أو موضوع المقترح *
           </label>
           <input
+            id="ticket-subject"
             type="text"
             required
             minLength={5}
@@ -236,10 +243,11 @@ export function TicketForm() {
 
         {/* Description */}
         <div>
-          <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+          <label htmlFor="ticket-description" className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
             التفاصيل الكاملة للشكوى *
           </label>
           <textarea
+            id="ticket-description"
             required
             rows={5}
             minLength={10}

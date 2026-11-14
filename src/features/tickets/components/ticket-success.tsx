@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { CheckCircleIcon } from '@/components/ui/icons';
 
 interface TicketSuccessProps {
   ticketNumber: string;
@@ -13,15 +14,15 @@ export function TicketSuccess({ ticketNumber, status, onReset }: TicketSuccessPr
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(ticketNumber);
+    void navigator.clipboard.writeText(ticketNumber);
     setCopied(true);
     setTimeout(() => setCopied(false), 2500);
   };
 
   return (
     <div className="bg-white dark:bg-[#0c1c30] rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700 p-8 text-center max-w-xl mx-auto">
-      <div className="w-16 h-16 bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">
-        ✓
+      <div className="w-16 h-16 bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 rounded-full flex items-center justify-center mx-auto mb-4">
+        <CheckCircleIcon className="w-8 h-8" />
       </div>
 
       <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-2">

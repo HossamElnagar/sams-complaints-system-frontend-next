@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { AdminTicket, resolveTicket, ResolvePayload } from '../lib/admin-api';
+import { CloseIcon } from '@/components/ui/icons';
 
 interface ResolveModalProps {
   ticket: AdminTicket | null;
@@ -68,7 +69,7 @@ export function ResolveModal({
             onClick={onClose}
             className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-1 rounded-lg"
           >
-            ✕
+            <CloseIcon className="w-5 h-5" />
           </button>
         </div>
 
@@ -95,9 +96,9 @@ export function ResolveModal({
 
           {/* Decision Type */}
           <div>
-            <label className="block text-sm font-semibold text-slate-800 dark:text-slate-200 mb-2">
+            <span className="block text-sm font-semibold text-slate-800 dark:text-slate-200 mb-2">
               قرار البت النهائي:
-            </label>
+            </span>
             <div className="grid grid-cols-2 gap-3">
               <button
                 type="button"
@@ -133,13 +134,14 @@ export function ResolveModal({
 
           {/* Written Justification (Mandatory) */}
           <div>
-            <label className="block text-sm font-semibold text-slate-800 dark:text-slate-200 mb-1">
+            <label htmlFor="resolution-justification" className="block text-sm font-semibold text-slate-800 dark:text-slate-200 mb-1">
               حيثيات ومبررات القرار الإداري (إلزامي - 10 أحرف كحد أدنى):
             </label>
             <p className="text-xs text-slate-500 dark:text-slate-400 mb-1.5">
               سيتم إدراج هذا القرار مع اسم الموظف والتوقيت في السجل الزمني التوثيقي للطالب.
             </p>
             <textarea
+              id="resolution-justification"
               required
               rows={4}
               value={justification}
