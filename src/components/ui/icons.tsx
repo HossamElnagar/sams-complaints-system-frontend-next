@@ -1,14 +1,14 @@
 import React from 'react';
 
 export interface IconProps extends React.SVGProps<SVGSVGElement> {
-  className?: string;
+  readonly className?: string;
 }
 
 /**
  * 🏛️ Landmark / Academy Institution Icon
  * Replaces generic temple emojis with a crisp sovereign architectural line icon.
  */
-export function LandmarkIcon({ className = 'w-5 h-5', ...props }: IconProps) {
+export function LandmarkIcon({ className = 'w-5 h-5', ...props }: Readonly<IconProps>) {
   return (
     <svg
       className={className}
@@ -37,7 +37,7 @@ export function LandmarkIcon({ className = 'w-5 h-5', ...props }: IconProps) {
  * Institutional alternative to generic AI sparkle/robot emojis.
  * Represents dignified, calculated human-in-the-loop directional triage.
  */
-export function CompassIcon({ className = 'w-5 h-5', ...props }: IconProps) {
+export function CompassIcon({ className = 'w-5 h-5', ...props }: Readonly<IconProps>) {
   return (
     <svg
       className={className}
@@ -60,7 +60,7 @@ export function CompassIcon({ className = 'w-5 h-5', ...props }: IconProps) {
  * ⚖️ Scale of Justice / Presidential Resolution & Governance Icon
  * Replaces informal emojis with a balanced scale of justice for sovereign decisions.
  */
-export function ScaleIcon({ className = 'w-5 h-5', ...props }: IconProps) {
+export function ScaleIcon({ className = 'w-5 h-5', ...props }: Readonly<IconProps>) {
   return (
     <svg
       className={className}
@@ -86,7 +86,7 @@ export function ScaleIcon({ className = 'w-5 h-5', ...props }: IconProps) {
  * 🛡️ ShieldCheck / Academic Integrity & Encrypted Tracking Icon
  * Replaces yellow lock emoji with an institutional integrity badge.
  */
-export function ShieldCheckIcon({ className = 'w-5 h-5', ...props }: IconProps) {
+export function ShieldCheckIcon({ className = 'w-5 h-5', ...props }: Readonly<IconProps>) {
   return (
     <svg
       className={className}
@@ -109,7 +109,7 @@ export function ShieldCheckIcon({ className = 'w-5 h-5', ...props }: IconProps) 
  * 🏢 Building / Nationwide Branches Icon
  * Replaces generic world/globe emoji with institutional academy campus structures.
  */
-export function BuildingIcon({ className = 'w-5 h-5', ...props }: IconProps) {
+export function BuildingIcon({ className = 'w-5 h-5', ...props }: Readonly<IconProps>) {
   return (
     <svg
       className={className}
@@ -137,7 +137,7 @@ export function BuildingIcon({ className = 'w-5 h-5', ...props }: IconProps) {
  * 📊 BarChart / Nationwide Executive BI Analytics Icon
  * Replaces colorful chart emoji with a clean institutional metrics graph.
  */
-export function BarChartIcon({ className = 'w-5 h-5', ...props }: IconProps) {
+export function BarChartIcon({ className = 'w-5 h-5', ...props }: Readonly<IconProps>) {
   return (
     <svg
       className={className}
@@ -162,7 +162,7 @@ export function BarChartIcon({ className = 'w-5 h-5', ...props }: IconProps) {
  * ⏱️ Clock / SLA Resolution Timing Icon
  * Replaces colorful stopwatch emoji with a crisp horological line icon.
  */
-export function ClockIcon({ className = 'w-5 h-5', ...props }: IconProps) {
+export function ClockIcon({ className = 'w-5 h-5', ...props }: Readonly<IconProps>) {
   return (
     <svg
       className={className}
@@ -185,7 +185,7 @@ export function ClockIcon({ className = 'w-5 h-5', ...props }: IconProps) {
  * 📄 FileCheck / Official Ticket Document Icon
  * Replaces paper emoji with an accredited document badge.
  */
-export function FileCheckIcon({ className = 'w-5 h-5', ...props }: IconProps) {
+export function FileCheckIcon({ className = 'w-5 h-5', ...props }: Readonly<IconProps>) {
   return (
     <svg
       className={className}
@@ -209,7 +209,7 @@ export function FileCheckIcon({ className = 'w-5 h-5', ...props }: IconProps) {
  * 🖨️ Printer / Executive Briefing Print Icon
  * Replaces print emoji with a high-fidelity line printer.
  */
-export function PrinterIcon({ className = 'w-5 h-5', ...props }: IconProps) {
+export function PrinterIcon({ className = 'w-5 h-5', ...props }: Readonly<IconProps>) {
   return (
     <svg
       className={className}
@@ -233,7 +233,7 @@ export function PrinterIcon({ className = 'w-5 h-5', ...props }: IconProps) {
  * 📥 Download / CSV Report Export Icon
  * Replaces tray emoji with a standardized download action vector.
  */
-export function DownloadIcon({ className = 'w-5 h-5', ...props }: IconProps) {
+export function DownloadIcon({ className = 'w-5 h-5', ...props }: Readonly<IconProps>) {
   return (
     <svg
       className={className}
@@ -257,7 +257,7 @@ export function DownloadIcon({ className = 'w-5 h-5', ...props }: IconProps) {
  * 👤 User / Authenticated Staff Pill Icon
  * Replaces silhouette emoji with a clean vector avatar.
  */
-export function UserIcon({ className = 'w-5 h-5', ...props }: IconProps) {
+export function UserIcon({ className = 'w-5 h-5', ...props }: Readonly<IconProps>) {
   return (
     <svg
       className={className}
@@ -280,7 +280,7 @@ export function UserIcon({ className = 'w-5 h-5', ...props }: IconProps) {
  * ✅ CheckCircle / Resolved SLA Status Icon
  * Replaces green tick emoji with an institutional verified status circle.
  */
-export function CheckCircleIcon({ className = 'w-5 h-5', ...props }: IconProps) {
+export function CheckCircleIcon({ className = 'w-5 h-5', ...props }: Readonly<IconProps>) {
   return (
     <svg
       className={className}
@@ -303,7 +303,7 @@ export function CheckCircleIcon({ className = 'w-5 h-5', ...props }: IconProps) 
  * ⚠️ AlertTriangle / Advisory & Precautionary Warning Icon
  * Replaces warning emoji with an official attention notice symbol.
  */
-export function AlertTriangleIcon({ className = 'w-5 h-5', ...props }: IconProps) {
+export function AlertTriangleIcon({ className = 'w-5 h-5', ...props }: Readonly<IconProps>) {
   return (
     <svg
       className={className}
@@ -327,7 +327,7 @@ export function AlertTriangleIcon({ className = 'w-5 h-5', ...props }: IconProps
  * 🔍 Search / Direct Query Icon
  * Replaces magnifying glass emoji with an optical lens vector.
  */
-export function SearchIcon({ className = 'w-5 h-5', ...props }: IconProps) {
+export function SearchIcon({ className = 'w-5 h-5', ...props }: Readonly<IconProps>) {
   return (
     <svg
       className={className}
@@ -350,7 +350,7 @@ export function SearchIcon({ className = 'w-5 h-5', ...props }: IconProps) {
  * 📭 Inbox / Active Queue Empty Status Icon
  * Replaces mailbox emoji with an official document tray line icon.
  */
-export function InboxIcon({ className = 'w-5 h-5', ...props }: IconProps) {
+export function InboxIcon({ className = 'w-5 h-5', ...props }: Readonly<IconProps>) {
   return (
     <svg
       className={className}
@@ -373,7 +373,7 @@ export function InboxIcon({ className = 'w-5 h-5', ...props }: IconProps) {
  * 🔄 Refresh / Live Data Synchronization Icon
  * Clean circular synchronization arrows.
  */
-export function RefreshIcon({ className = 'w-5 h-5', ...props }: IconProps) {
+export function RefreshIcon({ className = 'w-5 h-5', ...props }: Readonly<IconProps>) {
   return (
     <svg
       className={className}
@@ -398,7 +398,7 @@ export function RefreshIcon({ className = 'w-5 h-5', ...props }: IconProps) {
  * ✕ Close / Modal Dismiss Icon
  * Clean dismissal vector.
  */
-export function CloseIcon({ className = 'w-5 h-5', ...props }: IconProps) {
+export function CloseIcon({ className = 'w-5 h-5', ...props }: Readonly<IconProps>) {
   return (
     <svg
       className={className}
